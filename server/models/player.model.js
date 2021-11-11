@@ -7,6 +7,7 @@ const PlayerSchema = new mongoose.Schema(
       minlength: [2, "Name must be at least 2 characters long"],
     },
     preferred_position: { type: String },
+    player_status:{type: String, default: "undecided"}
   },
   { timestamps: true }
 );

@@ -17,7 +17,7 @@ const buttonContainerStyle = {
 const errStyle = {
   color: "red",
 };
-const PlayerForm = ({ onPlayerSubmit, errMsg, initialPlayer }) => {
+const PlayerForm = ({ onPlayerSubmit, errMsg, initialPlayer, setErrMsg }) => {
   const [input, setInput] = useState({
     name: initialPlayer.name,
     preferred_position: initialPlayer.preferred_position,
@@ -25,6 +25,10 @@ const PlayerForm = ({ onPlayerSubmit, errMsg, initialPlayer }) => {
   const onPlayerSubmitHandler = (e) => {
     e.preventDefault();
     onPlayerSubmit(input);
+  };
+  const handleNameChange = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+    setErrMsg("");
   };
   return (
     <form style={boxStyle} onSubmit={onPlayerSubmitHandler}>
@@ -38,9 +42,7 @@ const PlayerForm = ({ onPlayerSubmit, errMsg, initialPlayer }) => {
           id="name"
           name="name"
           value={input.name}
-          onChange={(e) =>
-            setInput({ ...input, [e.target.name]: e.target.value })
-          }
+          onChange={(e) => handleNameChange(e)}
           label="name:"
           sx={{ mb: "20px" }}
         />
