@@ -3,4 +3,5 @@ module.exports = function (app) {
   app.get("/players/list", PlayerController.index);
   app.post("/players/addplayer", PlayerController.createPlayer);
   app.delete("/players/:id", PlayerController.deletePlayer);
+  app.put("/status/game/:number/:id", PlayerController.updatePlayerStatus);
 };

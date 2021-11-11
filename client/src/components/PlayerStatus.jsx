@@ -38,11 +38,14 @@ const PlayerStatus = ({playerList, setPlayerList}) => {
 
     return (
         <TableContainer style={{ marginTop: "2rem" }}>
-        <a style={textStyle} href={"/players/list"}>
-          List
+            <h2>Player Status - GAME 1</h2>
+        <a style={textStyle} href={"/status/game/1"}>
+          Game 1
         </a>
         <span> | </span>
-        <a href={"/players/addplayer"}>Add Player</a>
+        <a href={"/status/game/1"}>Game 2</a>
+        <span> | </span>
+        <a href={"/status/game/1"}>Game 3</a>
         <Table
           sx={{ minWidth: 700, width: "70%", align: "center" }}
           style={tableStyle}
@@ -54,7 +57,7 @@ const PlayerStatus = ({playerList, setPlayerList}) => {
                 Team Name
               </StyledTableCell>
               <StyledTableCell align="center" style={{ fontSize: "1.5rem" }}>
-                Action
+                Actions
               </StyledTableCell>
             </TableRow>
           </TableHead>
@@ -65,9 +68,9 @@ const PlayerStatus = ({playerList, setPlayerList}) => {
                   {player.name}
                 </StyledTableCell>
                 <StyledTableCell component="th" scope="row">
-                  <StatusButton color={player.player_status === "playing"?'success': "primary"} text={'Playing'} setPlayerList={setPlayerList} playerId={player._id} status={'playing'}/>
-                <StatusButton color={player.player_status === "not_playing"?'error': "primary"} text={'Not Playing'} setPlayerList={setPlayerList} playerId={player._id} status={'not_playing'}/>
-                  <StatusButton color={player.player_status === "undecided"?'warning': "primary"} text={'Undecided'} setPlayerList={setPlayerList} playerId={player._id} status={'undecided'}/>
+                  <StatusButton color={player.player_status === "playing"?'success': "primary"} text={'Playing'} setPlayerList={setPlayerList} playerId={player._id} status={'playing'} playerList={playerList}/>
+                <StatusButton color={player.player_status === "not_playing"?'error': "primary"} text={'Not Playing'} setPlayerList={setPlayerList} playerId={player._id} status={'not_playing'} playerList={playerList}/>
+                  <StatusButton color={player.player_status === "undecided"?'warning': "primary"} text={'Undecided'} setPlayerList={setPlayerList} playerId={player._id} status={'undecided'} playerList={playerList}/>
                    
                 </StyledTableCell>
               </StyledTableRow>
